@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ExpenseItems from "./ExpenseItems";
 import "./Expenses.css";
 import Card from "../UI/Card";
-
 const Expenses = (props) => {
   const [expenses, setExpenses] = useState(props.items);
   const onDeletionOfExpense = (id) => {
@@ -24,6 +23,7 @@ const Expenses = (props) => {
         />
       ))}
     </Card>
+    
   );
 };
 
