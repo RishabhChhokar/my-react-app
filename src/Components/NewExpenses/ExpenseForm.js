@@ -48,7 +48,7 @@ const ExpenseForm = () => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    let newExpenseItem = { enteredTitle, enteredAmount, enteredDate, enteredLocation }
+    const newExpenseItem = {expenseItem : enteredTitle, itemPrice:enteredAmount, date : Date.now(enteredDate), locationOfExpenditure:enteredLocation }
     console.log(newExpenseItem);
   };
   return (
