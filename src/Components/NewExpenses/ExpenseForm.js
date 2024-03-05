@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, expenseTitleChange] = useState("");
   const [enteredAmount, expenseAmountChange] = useState("");
   const [enteredDate, expenseDateChange] = useState("");
@@ -48,26 +48,43 @@ const ExpenseForm = () => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    const newExpenseItem = {expenseItem : enteredTitle, itemPrice:enteredAmount, date : Date.now(enteredDate), locationOfExpenditure:enteredLocation }
-    console.log(newExpenseItem);
+    const newExpenseItem = {
+      expenseItem: enteredTitle,
+      itemPrice: enteredAmount,
+      date: Date.now(enteredDate),
+      locationOfExpenditure: enteredLocation,
+    };
+    props.sendDataToNewExpense(newExpenseItem)
+    expenseTitleChange("");
+    expenseAmountChange("");
+    expenseDateChange("");
+    expenseLocationChange("");
   };
   return (
     <form onSubmit={formSubmitHandler}>
       <div>
         <label>Expense Title</label>
-        <input type="text" onChange={titleChangeHandler} />
+        <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
       </div>
       <div>
         <label>Expense Amount</label>
-        <input type="Number" onChange={amountChangeHandler} />
+        <input
+          type="Number"
+          value={enteredAmount}
+          onChange={amountChangeHandler}
+        />
       </div>
       <div>
         <label>Expense Date</label>
-        <input type="date" onChange={dateChangeHandler} />
+        <input type="date" value={enteredDate} onChange={dateChangeHandler} />
       </div>
       <div>
         <label>Expense Location</label>
-        <input type="text" onChange={locationChangeHandler} />
+        <input
+          type="text"
+          value={enteredLocation}
+          onChange={locationChangeHandler}
+        />
       </div>
       <div>
         <button type="Submit">Add Expense</button>
