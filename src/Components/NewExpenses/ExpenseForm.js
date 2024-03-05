@@ -49,9 +49,9 @@ const ExpenseForm = (props) => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
     const newExpenseItem = {
+      date: new Date(enteredDate),
       expenseItem: enteredTitle,
-      itemPrice: enteredAmount,
-      date: Date.now(enteredDate),
+      itemPrice: enteredAmount, 
       locationOfExpenditure: enteredLocation,
     };
     props.sendDataToNewExpense(newExpenseItem)

@@ -4,9 +4,9 @@ import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Card";
 const ExpenseItems = (props) => {
-  const deleteExpenseHandler = () => {
-    props.onDeletionOfExpense(props.id);
-  };
+  // const deleteExpenseHandler = () => {
+  //   props.onDeletionOfExpense(props.id);
+  // };
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
@@ -15,7 +15,7 @@ const ExpenseItems = (props) => {
         locationOfExpenditure={props.locationOfExpenditure}
         itemPrice={props.itemPrice}
       />
-      <button onClick={deleteExpenseHandler}>Delete Expense</button>
+      {/* <button onClick={deleteExpenseHandler}>Delete Expense</button> */}
     </Card>
   );
 };
