@@ -10,18 +10,35 @@ const Expenses = (props) => {
   //     prevExpenses.filter((expense) => expense.id !== id)
   //   );
   // };
-  let yearlyFilteredExpenses;
+  let filteredExpenses;
   const [filteredYear, setFilteredYear] = useState("All years");
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
   if (filteredYear !== "All years") {
-    yearlyFilteredExpenses = props.items.filter(
+    filteredExpenses = props.items.filter(
       (item) => item.date.getFullYear() === parseInt(filteredYear)
     );
   } else {
-    yearlyFilteredExpenses = props.items;
+    filteredExpenses = props.items;
+  }
+
+  let expensesContent = <p>No Expenses for year {filteredYear}</p>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((item, index) => (
+      <ExpenseItems
+        key={item.id}
+        id={item.id}
+        date={item.date}
+        expenseItem={item.expenseItem}
+        itemPrice={item.itemPrice}
+        locationOfEx
+        penditure={item.locationOfExpenditure}
+        // onDeletionOfExpense={onDeletionOfExpense}
+      />
+    ));
   }
   return (
     <Card className="expenses">
@@ -29,17 +46,10 @@ const Expenses = (props) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {yearlyFilteredExpenses.map((item, index) => (
-        <ExpenseItems
-          key={item.id}
-          id={item.id}
-          date={item.date}
-          expenseItem={item.expenseItem}
-          itemPrice={item.itemPrice}
-          locationOfExpenditure={item.locationOfExpenditure}
-          // onDeletionOfExpense={onDeletionOfExpense}
-        />
-      ))}
+      {expensesContent}
+      {filteredExpenses.length===1 && (
+        <p>Only single Expense here. Please add more....</p>
+      )}
     </Card>
   );
 };
