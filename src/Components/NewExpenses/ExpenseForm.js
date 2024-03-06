@@ -51,10 +51,10 @@ const ExpenseForm = (props) => {
     const newExpenseItem = {
       date: new Date(enteredDate),
       expenseItem: enteredTitle,
-      itemPrice: enteredAmount, 
+      itemPrice: enteredAmount,
       locationOfExpenditure: enteredLocation,
     };
-    props.sendDataToNewExpense(newExpenseItem)
+    props.sendDataToNewExpense(newExpenseItem);
     expenseTitleChange("");
     expenseAmountChange("");
     expenseDateChange("");
@@ -70,13 +70,15 @@ const ExpenseForm = (props) => {
         <label>Expense Amount</label>
         <input
           type="Number"
+          min="0.01"
+          step="0.01"
           value={enteredAmount}
           onChange={amountChangeHandler}
         />
       </div>
       <div>
         <label>Expense Date</label>
-        <input type="date" value={enteredDate} onChange={dateChangeHandler} />
+        <input type="date"  min="2021-01-01" max="2024-12-31" value={enteredDate} onChange={dateChangeHandler} />
       </div>
       <div>
         <label>Expense Location</label>
