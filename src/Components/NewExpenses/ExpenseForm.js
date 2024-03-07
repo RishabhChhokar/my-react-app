@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./ExpenseForm.css"
 const ExpenseForm = (props) => {
   const [enteredTitle, expenseTitleChange] = useState("");
   const [enteredAmount, expenseAmountChange] = useState("");
@@ -62,11 +63,12 @@ const ExpenseForm = (props) => {
   };
   return (
     <form onSubmit={formSubmitHandler}>
-      <div>
+      <div className="new-expense__controls">
+      <div div className="new-expense__control">
         <label>Expense Title</label>
         <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
       </div>
-      <div>
+      <div className="new-expense__control">
         <label>Expense Amount</label>
         <input
           type="Number"
@@ -76,7 +78,7 @@ const ExpenseForm = (props) => {
           onChange={amountChangeHandler}
         />
       </div>
-      <div>
+      <div className="new-expense__control">
         <label>Expense Date</label>
         <input
           type="date"
@@ -86,7 +88,7 @@ const ExpenseForm = (props) => {
           onChange={dateChangeHandler}
         />
       </div>
-      <div>
+      <div className="new-expense__control">
         <label>Expense Location</label>
         <input
           type="text"
@@ -94,8 +96,10 @@ const ExpenseForm = (props) => {
           onChange={locationChangeHandler}
         />
       </div>
-      <div>
+      <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>Cancel</button>
         <button type="Submit">Add Expense</button>
+      </div>
       </div>
     </form>
   );

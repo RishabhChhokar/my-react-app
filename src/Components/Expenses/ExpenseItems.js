@@ -8,15 +8,17 @@ const ExpenseItems = (props) => {
   //   props.onDeletionOfExpense(props.id);
   // };
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
-      <ExpenseDetails
-        expenseItem={props.expenseItem}
-        locationOfExpenditure={props.locationOfExpenditure}
-        itemPrice={props.itemPrice}
-      />
-      {/* <button onClick={deleteExpenseHandler}>Delete Expense</button> */}
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <ExpenseDetails
+          expenseItem={props.expenseItem}
+          locationOfExpenditure={props.locationOfExpenditure}
+          itemPrice={props.itemPrice}
+        />
+        {/* <button onClick={deleteExpenseHandler}>Delete Expense</button> */}
+      </Card>
+    </li>
   );
 };
 
