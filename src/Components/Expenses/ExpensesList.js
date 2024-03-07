@@ -2,10 +2,10 @@ import ExpenseItems from "./ExpenseItems";
 import './ExpensesList.css'
 const ExpensesList = (props) => {
   if (props.items.length === 0)
-    return <h2 className='expense_issues'>No Expenses for year {props.year}</h2>;
+    return <h2 className='expense_issues'>No Expenses Found</h2>;
 
   return (
-    <ul>
+    <ul className="expenses-list">
       {props.items.map((item, index) => (
         <ExpenseItems
           key={item.id}
@@ -13,9 +13,7 @@ const ExpensesList = (props) => {
           date={item.date}
           expenseItem={item.expenseItem}
           itemPrice={item.itemPrice}
-          locationOfEx
-          penditure={item.locationOfExpenditure}
-          // onDeletionOfExpense={onDeletionOfExpense}
+          locationOfExpenditure={item.locationOfExpenditure}
         />
       ))}
       {props.items.length === 1 && (
